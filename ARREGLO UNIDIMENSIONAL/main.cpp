@@ -1,63 +1,63 @@
 /* 
  * File:   main.cpp
- * Author: Soter
+ * Author: 
  * 
- * Created on 1 de noviembre de 2016, 10:44 AM
+ * Created on 2 de noviembre de 2016, 16:10 PM
  */
-#include <iostream>
+#include<iostream>
 #define MAX 30
 
-// No se deberia declara, sino usar std:: para cada funcion de iostream
 using namespace std;
-
-
-// Inicio de la clase hacker
-int a, b, c;
-class hack {
-	public:
-		int array[30],n,i;};
-
-// Final de la clase hack
-
-// Inicio de la clase soter
-class soter{
+// Inicio de la clase Soter
+class Soter {
 public:
-    char nombre[8];
+    int len, arr[30];
+    void leer();
+    void eliminar_dup();
+    void mostrar();
 };
-// Final de la clase soter
+void Soter::leer() {
+    len = 0;
+    int n;
+    do {
+    	cout << "**************************************************";
+		cout << "\n";
+        cout << "\nIntroduzca la cantidad de valores (entre 1 y 30)" << endl;
+        cin >> n;
+        if(n < 1 || n > MAX)
+            cout << "\n***Error***" << endl;
+        else
+            len = n;
+    } while(n < 1 || n > MAX);
 
-// inicio de la funcion principal del programa
-int main(void){
-    // objeto soter
-    soter irc;
-    
-    cout<<"Saludos, cual es tu nombre?  "; 
-    cin>>irc.nombre;
-	    
-    cout<<"\nHola "<<irc.nombre;
-    
-    //objeto hack
-    hack num;
-    //Se pide valor a usuari y se condiciona el valor
-    do{
-        cout<<"\n\nCantidad de elementos a ingresar: ";cin>>num.n;
-            if(num.n<=0)
-                cout<<"...No seas payaso(a), ingresa una cantidad correcta: "<<endl;
-            if(num.n>MAX)
-                cout<<"...La cantidad maxima permitida es "<<MAX<<" : "<<endl;
-    }while(num.n<=0 || num.n>MAX);
-    //Se hacen las operaciones que se piden el problema
-		for(num.i=0; num.i<num.n; num.i++){
-		cout<<"\n Elemneto ["<<num.i<<"] ";
-		cin>> num.array	[num.i];
-	}
-	cout<<"\n Elementos en el array: ";
-	for(num.i=0; num.i<num.n; num.i++){
-		cout<<"\n Elemneto ["<<num.i<<"]: "<<num.array[num.i];
-		
-	}
-	cout<<"\n Elementos en el array sin repetir: ";	
-	
-	                
+    cout << "\n***Escriba los valores***" << endl;
+
+    for(int i=0; i<len; i++)
+        cin >> arr[i];
+}
+void Soter::eliminar_dup() {
+    for(int i=0; i<len-1; i++)
+        for(int j=i+1; j<len; j++) {
+            if(arr[i] == arr[j]) {
+                for(int k=j;k<len-1;k++)
+                   swap(arr[k], arr[k+1]);
+                len--;
+                j--;
+            }
+      }
+}
+void Soter::mostrar() {
+	cout << "**************************************************";
+	cout << "\n";
+    for(int i=0;i<len;i++)
+        cout << arr[i] << "- \n"[i==len-1];
+        cout << "\n**************************************************";
+		cout << "\n";
+}
+int main() {
+    Soter RC;
+    RC.leer();
+    RC.eliminar_dup();
+    RC.mostrar();
     return 0;
 }
