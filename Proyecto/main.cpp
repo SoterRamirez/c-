@@ -142,7 +142,7 @@ int main() {
 	SetConsoleTitle("EQUIPO TROLL");
 	int op,op2;
     Soter RC;
-    RC.login();
+    //RC.login();
     RC.creditos();
     RC.leer();
     cin>>op;
