@@ -28,6 +28,36 @@ Realizar una clase que contenga un arreglo unidimensional de 30 números enteros
  
 Incluir un método constructor para inicializar el arreglo con un valor de ceros.
 
+Explicacion del uso swap
+----
+
+```sh
+void Soter::eliminar_dup() {
+
+    for(int i=0; i<len-1; i++)
+        for(int j=i+1; j<len; j++) {
+            ///Si encontramos un duplicado
+            if(arr[i] == arr[j]) {
+
+                ///Lo vamos intercambiando hasta que quede al final
+                for(int k=j;k<len-1;k++)
+                   swap(arr[k], arr[k+1]);
+
+                ///Disminuimos la longitud en 1, lo que significa
+                ///que se elimina un elemento
+                len--;
+
+                ///Disminuimos a j para que se quede en el mismo
+                ///lugar (vease que el elemento que estaba en esa
+                ///posicion fue eliminado, si no disminuimos j en 1
+                ///nos saltamos un valor por analizar).
+                j--;
+            }
+      }
+}
+```
+
+
 License
 ----
 The MIT License (MIT)
