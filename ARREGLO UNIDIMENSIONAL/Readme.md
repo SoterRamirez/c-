@@ -57,6 +57,132 @@ void Soter::eliminar_dup() {
 }
 ```
 
+Otro metodo para eliminar números repetidos:
+
+**Contenedor std::set**
+
+`std::set` es un contenedor de la STL que almacena una lista de elementos ordenados y sin duplicados. Su uso es bastante simple:
+```sh
+    std::set<int> numeros;
+    for( int i=0; i<10; i++ )
+    {
+      int n;
+      std::cout << "Introduce un número: ";
+      std::cin >> n;
+      numeros.insert(n);
+    }
+    
+    std::cout << "Lista de números sin repeticiones:\n";
+    for( int numero : numeros )
+      std::cout << numero << '\n';
+```
+**std::vector + std::sort + std::unique**
+
+`std::vector` es el contenedor por excelencia de la STL. Almacena una lista de elementos sin ordenar, admite duplicados y, su gran ventaja, todos los elementos están en posiciones contiguas de memoria, por lo que su acceso es muy rápido al aprovechar las bondades de la caché.
+
+`std::sort` es una utilidad de la STL que permite ordenar un rango de valores.
+
+`std::unique` es una utilidad de la STL que dado un rango de elementos (iteradores de inicio y de final de rango), elimina todas las apariciones contiguas de elementos repetidos. Bueno, realmente no los elimina... los mueve al final del rango. Finalmente te devuelve un iterador al primer elemento duplicado.
+```sh
+    std::vector<int> numeros;
+    for( int i=0; i<10; i++ )
+    {
+      int n;
+      std::cout << "Introduce un número: ";
+      std::cin >> n;
+      numeros.push_back(n);
+    }
+    
+    // Primero ordenamos la secuencia
+    std::sort(numeros.begin(),numeros.end());
+
+    // Despues eliminamos los duplicados
+    numeros.erase(std::unique(numeros.begin(),numeros.end()),numeros.end());
+
+    std::cout << "Lista de números sin repeticiones:\n";
+    for( int numero : numeros )
+      std::cout << numero << '\n';
+```
+Aunque pueda parecer un método más engorroso, este mecanismo es bastante más rápido que el anterior ante secuencias bastante largas... cuanto más largas mayor diferencia de velocidad.
+
+**Contenedor std::set + std::tie**
+
+Los dos métodos anteriores presentan un inconveniente y es que ordenan la secuencia inicial. Este método está pensado para mantener la secuencia original inalterada pero sin duplicados.
+
+Si revisas la ayuda de `std::set` podrás observar que el método `insert()` devuelve un `std::pair`, que no es más que un objeto que permite almacenar una pareja de valores. El primer valor es un iterador al elemento insertado y el segundo valor es un booleano que indica si el elemento insertado es nuevo en el contenedor o si ya existía.
+
+`std::tie` es una función que permite _explotar_ ese objeto `std::pair` para recuperar sus elementos individuales. La gran ventaja de este método es que permite descartar valores que no nos interesan. Para tu caso particular únicamente te interesa el segundo valor, el booleano: si el mismo es true quiere decir que el elemento no existía en el contenedor.
+
+La idea es combinar `std::set` y `std::tie` para identificar los elementos duplicados y eliminarlos sin necesidad de reorganizar el contenedor original:
+```sh
+    std::vector<int> entrada{ 1,2,1,6,4,2,2,2,3 };
+    std::vector<int> salida;
+    std::set<int> detector;
+    for( numero : entrada)
+    {
+      bool nuevo;
+      std::tie(std::ignore,nuevo) = detector.insert(numero);
+      if( nuevo )
+        salida.push_back(numero); // solo se añaden los numeros no duplicados
+    }
+    
+    for( int numero : salida)
+      std::cout << numero << '\n';
+```
+`std::ignore` no es más que una especie de papelera, se usa para descartar valores que no necesitamos.
+
+**Programando todo de cero**
+
+Si tienes una secuencia y quieres eliminar los duplicados puedes optar por recorrer la secuencia de principio a fin y en cada iteración comparar el elemento actual con todos los anteriores... si hay coincidencia el elemento está duplicado y debes eliminarlo:
+```sh
+    std::vector<int> entrada{ 1,2,1,6,4,2,2,2,3 };
+    std::vector<int> salida;
+    
+    for( auto it = entrada.begin(); it != entrada.end(); ++it )
+    {
+      bool duplicado = false;
+      for( auto it2 = entrada.begin(); it2 != it; ++it2 )
+      {
+        if( *it == *it2 )
+        {
+          duplicado = true;
+          break;
+        }
+      }
+    
+      if( !duplicado )
+        salida.push_back(*it);
+    }
+    
+    for( int numero : salida)
+      std::cout << numero << '\n';
+```
+**Simplificando el ejemplo anterior**
+
+También podemos darle un pequeño repaso al ejemplo anterior para aprovechar un poco la STL:
+```sh
+    std::vector<int> entrada{ 1,2,1,6,4,2,2,2,3 };
+    std::vector<int> salida;
+    
+    for( auto it = entrada.begin(); it != entrada.end(); ++it )
+    {
+      if( std::count(entrada.begin(),it,*it) == 0 )
+        salida.push_back(*it);
+    }
+  
+    for( int numero : salida)
+      std::cout << numero << '\n';
+```
+`std::count` te indica el número de veces que un valor determinado se repite en un rango. En este caso iteramos desde el inicio de la lista hasta el número inmediatamente anterior al que estamos comprobando y el número a buscar es el número actual:
+```sh
+    //            (1)          (2)  (3)
+    std::count(entrada.begin(), it, *it)
+    
+    // (1): inicio del rango = inicio de la lista
+    // (2): fin del rango = posición actual (no se incluye en la búsqueda)
+    // (3): valor a buscar = número actual
+```
+
 
 License
 ----
