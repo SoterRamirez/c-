@@ -31,6 +31,7 @@ public:
     void menu1();
     void linea();
     void mantenimiento();
+<<<<<<< HEAD
     void Ayuda();
     void AdminMenu();
     void Admin();
@@ -169,6 +170,27 @@ void Soter::mantenimiento(){;
 	cout<<"          |    @o_.-' @#####/"<<endl;
 	cout<<"          |_.-#@       @###/"<<endl;
 	cout<<"          ######@       @/'"<<endl;
+=======
+};
+void Soter::mantenimiento(){;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Yellow);
+	cout<<"         ,-.                    .'\ _"<<endl;
+	cout<<"       ,'   \                 .'   (_)"<<endl;
+	cout<<"      J     '-._ /\         .'     (,_)"<<endl;
+	cout<<"     /  _  /   ,'# )_       _\_     (_)"<<endl;
+	cout<<"    /  '_Y'   /_.,'  \     (  _')     \        DISCULPE"<<endl;
+	cout<<"    | _ /   ,'\/  .   |    '.  __)     \       LAS  "<<endl;
+	cout<<"    |'.Y   / # ) --'  /  _.-'  __)    .'     MOLESTIAS"<<endl;
+	cout<<" _._\,'  ,'__,'      /  _\    / \   .'"<<endl;
+	cout<<"   ,'-_ /           _.-' _\  /   \.'"<<endl;
+	cout<<"  '    (_       _.-' _.-'  \/"<<endl;
+	cout<<"         \  _.-' _.-' '-.     ./ "<<endl;
+	cout<<"          -'  .-'        '-.-'/"<<endl;
+	cout<<"          |   \o     _.-'####/"<<endl;
+	cout<<"          |    \o_.-' \#####/"<<endl;
+	cout<<"          |_.-#\       \###/"<<endl;
+	cout<<"          ######\       \/'"<<endl;
+>>>>>>> origin/master
 	cout<<"          # #####`-.	"<<endl;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Red);
 	cout<<"o     o                o                o          o                o"<<endl;     
@@ -190,10 +212,17 @@ system("cls");
 	cout<<"           .-'         |   /   `.__//+UNITEC                          |"<<endl;
 	cout<<"        .-'           _.--/        / A. Torres                        |"<<endl;
 	cout<<"       |        _  .-'   /        /  Zodiaco                          |"<<endl;
+<<<<<<< HEAD
 	cout<<"       |     ._  @      /     `  /   Adolfo Lopez Mateos               |"<<endl;
 	cout<<"       |        ` .    /     `  /    +Vocacional 3                    |"<<endl;
 	cout<<"       |         @ @ '/        /     Valle de Ecatepec                  |"<<endl;
 	cout<<"       |        - @  /        /|     Las Americas                      |"<<endl;
+=======
+	cout<<"       |     ._  \      /     `  /   Adolfo Lopez Mateos               |"<<endl;
+	cout<<"       |        ` .    /     `  /    +Vocacional 3                    |"<<endl;
+	cout<<"       |         \ \ '/        /     Valle de Ecatepec                  |"<<endl;
+	cout<<"       |        - \  /        /|     Las Americas                      |"<<endl;
+>>>>>>> origin/master
 	cout<<"       |        '  .'        / |     +Hospital                        |"<<endl;
 	cout<<"       |          '         |.'|     Aquiles Serdan                   |"<<endl;
 	cout<<"       |                    |  |     Palomas                          |"<<endl;
@@ -206,7 +235,11 @@ system("cls");
 	cout<<"    .A/`-.              / |    |     +Ojo de Agua       + = Express   |"<<endl;
 	cout<<"   AMMMA. `-._         / /     |______________________________________|"<<endl;
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Red);
+<<<<<<< HEAD
 	cout<<"  AMMMMMMMMA. `-.     / /       Lunes a Domingo de 4:30 a 0:30 Hrs   "<<endl;
+=======
+	cout<<"  AMMMMMMMMA. `-.     / /Lunes a Domingo de 4:30 a 0:30 Hrs   "<<endl;
+>>>>>>> origin/master
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Def);
 };
 void Soter::creditos(){
@@ -253,10 +286,17 @@ void Soter::menu1(){
     cout<<"                                         .--. "<<endl;
     cout<<"      (1)RECARGAR                       |o_o | "<<endl;
     cout<<"      (2)VENTA  DE                      |:_/ | "<<endl;
+<<<<<<< HEAD
     cout<<"          TARJETA                      //   @ @ "<<endl;
     cout<<"      (3)MAPA                         (|     | ) "<<endl;
     cout<<"      (4)TORNIQUETE                  /'@_   _/`@ "<<endl;
     cout<<"      (5)SALIR                       @___)=(___/  "<<endl;
+=======
+    cout<<"          TARJETA                      //   \ \ "<<endl;
+    cout<<"      (3)MAPA                         (|     | ) "<<endl;
+    cout<<"      (4)TORNIQUETE                  /'\_   _/`\ "<<endl;
+    cout<<"      (5)SALIR                       \___)=(___/  "<<endl;
+>>>>>>> origin/master
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Red);
     cout<<"                                  GITHUB REPO utfg"<<endl;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Yellow);
@@ -317,10 +357,17 @@ void Soter::login(){
       SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color_Def);
    }
 }
+<<<<<<< HEAD
 int main (void){
     SetConsoleTitle("EQUIPO TROLL");
     int op,op2,dato;
     int Recarga, PrecioTarjeta, RecargaySaldo, Torniquete,SaldoM, PrecioM;
+=======
+
+int main (void){
+    SetConsoleTitle("EQUIPO TROLL");
+    int op,op2,dato;
+>>>>>>> origin/master
     Soter RC;
     RC.login();
         do{ 
@@ -336,6 +383,7 @@ int main (void){
                             cin>>op2;
  
                             switch(op2){
+<<<<<<< HEAD
                                 case 1: 
                                 cout<<"-------------Recargando tarjeta-------------"<<endl;
                                 cout<<"Favor de ingresar: "<<endl;
@@ -400,6 +448,10 @@ int main (void){
                                 case 1: 
                                 cout<<"Defina el saldo maximo para poder recargar la tarjeta: "<<endl;
 								cin >> SaldoM;
+=======
+                                case 1: cout<<"\nIngrese codigo:";
+                                        cin>>dato;
+>>>>>>> origin/master
                                         break;
  
                                 case 2: 
@@ -407,8 +459,16 @@ int main (void){
 								cin>>Torniquete;
                                         break;
  
+<<<<<<< HEAD
                                 case 4: cout<<"\nDina precio de la tarjeta: ";
                                 
+=======
+                                case 3: RC.linea();
+                                        
+                                        break;
+ 
+                                case 4: cout<<"\nIngrese codigo:";
+>>>>>>> origin/master
                                         
                                         break;
  
@@ -421,14 +481,58 @@ int main (void){
                             system("pause");  system("cls");
                         }while(op2!=5);
                         break;
+<<<<<<< HEAD
+=======
+ 
+                /*-------------  MEXICABLE ---------------*/
+                case 2: system("cls");
+                        do{
+                            RC.mantenimiento();
+                            system("pause");  system("cls");
+                        }while(op2!=5);
+                        break;
+ 
+                /*-------------  ADMIN ---------------
+                case 3: system("cls");
+                        do{
+                            titulo();
+                            menu4();
+                            cin>>op2;
+ 
+                            switch(op2){
+                                case 1: 
+                                        break;
+ 
+                                case 2: cout<<"\n\n\t\t[  LISTAR VENTAS REALIZADAS ]\n";
+                                        cout<<"\t\t------------------------\n";
+                                       
+                                        break;
+                                case 3: cout<<"\n\n\t\t[    DETALLES DE VENTA    ]\n";
+                                        cout<<"\t\t------------------------\n";
+                                        break;
+ 
+                                case 5: break;
+ 
+                                default: cout<<"\nINGRESE UNA OPCION VALIDA...\n"; break;
+ 
+                            }
+                            cout<<endl;
+                            system("pause");  system("cls");
+                        }while(op2!=5);
+                        break;*/
+>>>>>>> origin/master
                 /*-------------  CREDITOS ---------------*/
                 case 4: system("cls");
                         RC.creditos();
                         break;               
+<<<<<<< HEAD
                 case 5:  system("cls");
                 		RC.Ayuda();
                 		break;
 				case 6: return 0;
+=======
+                case 5: return 0;
+>>>>>>> origin/master
                 default: cout<<"\nINGRESE UNA OPCION VALIDA...\n"; break;
             }
             cout<<endl;
